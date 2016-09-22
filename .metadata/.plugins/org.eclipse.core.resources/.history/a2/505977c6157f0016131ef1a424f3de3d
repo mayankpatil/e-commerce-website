@@ -1,0 +1,37 @@
+package com.book.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.book.dao.CartDAOImpl;
+import com.book.model.Cart;
+
+@Service
+@Transactional
+
+public class CartService {
+
+	@Autowired
+	CartDAOImpl CartDAO;
+		public List<Cart> list(){
+			return CartDAO.list();
+		}
+		public void saveOrUpdate(Cart cart){
+			CartDAO.saveOrUpdate(cart);
+		}
+			
+		public void delete(String id) {
+			CartDAO.delete(id);
+			
+		}
+		public Cart get(String id){
+			return CartDAO.get(id);
+		
+        }
+		public Cart getByName(String name){
+			return CartDAO.getByName(name);
+		}
+}

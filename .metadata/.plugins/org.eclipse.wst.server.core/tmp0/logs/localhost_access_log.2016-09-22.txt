@@ -1,0 +1,9 @@
+127.0.0.1 - - [22/Sep/2016:11:51:04 +0530] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [22/Sep/2016:11:51:07 +0530] "GET /bookstore/ HTTP/1.1" 404 1014
+127.0.0.1 - - [22/Sep/2016:11:54:11 +0530] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [22/Sep/2016:11:54:13 +0530] "GET /bookstore/ HTTP/1.1" 200 11277
+0:0:0:0:0:0:0:1 - - [22/Sep/2016:11:54:13 +0530] "GET /bookstore/resources/bootstrap-3.3.7-dist/js/angular.min.js HTTP/1.1" 404 992
+0:0:0:0:0:0:0:1 - - [22/Sep/2016:11:54:13 +0530] "GET /bookstore/resources/images/book1.jpg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2016:11:54:14 +0530] "GET /bookstore/resources/images/new.jpg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2016:11:54:14 +0530] "GET /bookstore/resources/images/find.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2016:11:54:14 +0530] "GET /bookstore/resources/images/slide.jpg HTTP/1.1" 304 -

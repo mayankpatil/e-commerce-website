@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans.xsd
+	  http://www.springframework.org/schema/mvc
+	   http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	    http://www.springframework.org/schema/context
+	     http://www.springframework.org/schema/context/spring-context.xsd
+	      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="org.h2.Driver" />
+		<property name="url" value="jdbc:h2:tcp://localhost/~/bookdb" />
+		<property name="username" value="mayank" />
+		<property name="password" value="" />
+	</bean>
+
+	<context:component-scan base-package="com.book" />
+	<tx:annotation-driven/>
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>com.book.model</value>
+				
+			</list>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10240000" />
+	</bean>
+
+<bean id="productService" class="com.book.service.ProductService"></bean>
+	<bean id="productDAO" class="com.book.dao.ProductDAOImpl" ></bean>
+ <bean id="categoryService" class="com.book.service.CategoryService"></bean>
+	<bean id="categoryDAO" class="com.book.dao.CategoryDAOImpl" ></bean>
+	 <bean id="supplierDAO" class="com.book.dao.SupplierDAOImpl" ></bean>
+		<bean id="supplierService" class="com.book.service.SupplierService"></bean>
+         <bean id="sub_categoryService" class="com.book.service.Sub_CategoryService"></bean>
+	<bean id="sub_categoryDAO" class="com.book.dao.Sub_CategoryDAOImpl" ></bean> 
+	<bean id="userService" class="com.book.service.UserService"></bean>
+	<bean id="userDAO" class="com.book.dao.UserDAOImpl" ></bean>
+	<bean id="cartService" class="com.book.service.CartService"></bean>
+	<bean id="cartDAO" class="com.book.dao.CartDAOImpl" ></bean>	
+	
+</beans>

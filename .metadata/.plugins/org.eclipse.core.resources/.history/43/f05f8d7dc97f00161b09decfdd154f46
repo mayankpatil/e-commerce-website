@@ -1,0 +1,16 @@
+package com.book.dao;
+
+import java.util.List;
+
+import com.book.model.Customer;
+
+public interface CustomerDAO {
+
+	void saveOrUpdate(Customer customer);
+	
+	Customer get(String customerId);
+	
+	List<Customer> listCustomer();
+	
+	Customer getCustomerByUserName(String userName);
+}
